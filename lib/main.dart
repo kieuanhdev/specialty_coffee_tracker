@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:specialty_coffee_tracker/injection_container.dart' as di;
 
-void main() {
+void main() async {
+  // Bắt buộc phải có dòng này khi hàm main là async (để tương tác với native code như path_provider)
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Chờ "tổng đài" GetIt và Isar Database khởi tạo xong xuôi
+  await di.init();
+
   runApp(const MyApp());
 }
 
